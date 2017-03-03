@@ -12,7 +12,7 @@
  *
  * Dependencies: JQuery v1.7+, JQuery UI, store.js from https://github.com/marcuswestin/store.js - v1.3.4+
  *
- * version 1.0.10
+ * version 1.0.11
  **/
 
 /*global jQuery: false, document: false, store: false, clearInterval: false, setInterval: false, setTimeout: false, clearTimeout: false, window: false, alert: false*/
@@ -138,8 +138,7 @@
         activityDetector = function () {
 
             $('body').on(currentConfig.activityEvents, function () {
-
-                if (!currentConfig.enableDialog || (currentConfig.enableDialog && isDialogOpen() !== true)) {
+                if ((store.get('idleTimerLoggedOut') !== true) && (!currentConfig.enableDialog || isDialogOpen() !== true)) {
                     startIdleTimer();
                 }
             });
